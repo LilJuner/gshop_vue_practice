@@ -4,15 +4,17 @@
  */
 //1.根据经纬度获取位置详情
 import ajax from './ajax'
-export const reqAddress = () => ajax()
+
+const BASE_URL = '/api'
+
 //2.获取食品分类列表
-export const reqAddress = (geohash) => ajax(`/position/${geohash}`)
+export const reqAddress = (geohash) => ajax(`${BASE_URL}/position/${geohash}`)
 //3.根据经纬度获取商铺列表
-export const reqFoodTypes = () => ajax('/index_category')
+export const reqFoodCategorys = () => ajax(BASE_URL + '/index_category')
 //4.根据经纬度和关键字搜索商铺列表
-export const reqShops = (longitude, latitude) => ajax('/shops',{longitude, latitude})
+export const reqShops = (longitude, latitude) => ajax(BASE_URL+'/shops',{longitude, latitude})
 //5.获取一次性验证码
-export const reqCaptcha = () => ajax('/captcha','GET')
+export const reqCaptcha = () => ajax(BASE_URL+'/captcha','GET')
 //6.用户名密码登录
 export const reqPwdLogin = (name,pwd,captcha) => ajax('/api/login_pwd',
   {name,pwd,captcha},'POST')
